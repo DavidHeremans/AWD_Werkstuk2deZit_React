@@ -7,6 +7,7 @@ const spell = (props) => {
         <div className="card">
             <p> Spell: {props.name}</p>
             <p>Level: {props.level}</p>
+            <button type="submit" >+</button>
 
 
 

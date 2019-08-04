@@ -3,6 +3,15 @@ import Spells from './Spells/Spells';
 import './App.css';
 import axios from 'axios';
 
+//Bronnen
+// API ophalen: https://stackoverflow.com/questions/54592441/promise-all-and-correctly-update-the-state-using-react-js
+// Zoekfunctie: https://www.youtube.com/watch?v=YRiMo2EjVds
+
+function searchName(value) {
+    return function (x) {
+        return x.name.toLowerCase().includes(value.toLowerCase()) || !value;
+    }
+}
 
 class App extends Component {
 
@@ -12,8 +21,10 @@ class App extends Component {
         this.state = {
             spells: [],
             spellsInfo: [],
-            isLoaded: false
+            value: ''
         };
+
+        this.onChangeHandler = this.onChangeHandler.bind(this);
     }
 
 
@@ -28,37 +39,43 @@ class App extends Component {
 
     }
 
-    loadInfo() {
+    loadInfo = () => {
         Promise.all(this.state.spells.map(name =>
                 axios.get(name.url)
                     .then(response => {
                             [response.data].forEach((spell) =>
-                                this.state.spellsInfo.push(spell)
+                                this.setState({spellsInfo: [...this.state.spellsInfo, spell]})
                             )
-                           
                         }
                     )
-            ),
+            )
         )
-    }
+    };
 
+    onChangeHandler = (e) => {
+        this.setState({value: e.target.value})
+    };
+
+    saveInLocalStorage = (e) => {
+        localStorage.setItem("nameSpell", e.target.value);
+    };
 
     render() {
-
-
-        const splInf = this.state.spellsInfo.map((spell) => {
+        const splInf = this.state.spellsInfo.filter(searchName(this.state.value)).map((spell) => {
             return <Spells name={spell.name} level={spell.level}/>
-
         });
 
         return (
-
             <div className="App">
                 <h2>Spells from DnD</h2>
-
+                <form>
+                    <label>Search</label>
+                    <input type="text" value={this.state.value} onChange={e => this.onChangeHandler(e)}/>
+                </form>
                 <section className="Spells">
 
-                    <div>{splInf}</div>
+                    <div>{splInf}
+                    </div>
 
                 </section>
             </div>
