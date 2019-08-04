@@ -85,7 +85,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.npm start">
+  <component name="RunManager" selected="npm.eject">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
@@ -129,7 +129,7 @@
       <workItem from="1564830230035" duration="15707000" />
       <workItem from="1564910482749" duration="14097000" />
       <workItem from="1564925524761" duration="4808000" />
-      <workItem from="1564939762681" duration="374000" />
+      <workItem from="1564939762681" duration="4519000" />
     </task>
     <servers />
   </component>

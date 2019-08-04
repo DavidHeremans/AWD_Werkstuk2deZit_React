@@ -57,7 +57,9 @@ class App extends Component {
     };
 
     saveInLocalStorage = (e) => {
-        localStorage.setItem("nameSpell", e.target.value);
+        const indexSpell = e.target.value;
+        console.log(indexSpell);
+        localStorage.setItem("spellIndex", indexSpell);
     };
 
     render() {
@@ -73,10 +75,9 @@ class App extends Component {
                     <input type="text" value={this.state.value} onChange={e => this.onChangeHandler(e)}/>
                 </form>
                 <section className="Spells">
-
-                    <div>{splInf}
+                    <div>
+                        {splInf}
                     </div>
-
                 </section>
             </div>
         );
