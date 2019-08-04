@@ -8,6 +8,8 @@ const spell = (props) => {
             <p> Spell: {props.name}</p>
             <p>Level: {props.level}</p>
 
+
+
         </div>
     );
 }

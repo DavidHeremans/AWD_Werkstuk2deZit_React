@@ -6,27 +6,60 @@ import axios from 'axios';
 
 class App extends Component {
 
-    state = {
-        spells: []
-    };
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            spells: [],
+            spellsInfo: [],
+            isLoaded: false
+        };
+    }
+
 
     componentDidMount() {
+
         axios.get('http://www.dnd5eapi.co/api/spells/')
             .then(response => {
-        this.setState({spells: response.data.results});
-        });
+                this.setState({spells: response.data.results});
+                this.loadInfo();
+            });
+
+
     }
+
+    loadInfo() {
+        Promise.all(this.state.spells.map(name =>
+                axios.get(name.url)
+                    .then(response => {
+                            [response.data].forEach((spell) =>
+                                this.state.spellsInfo.push(spell)
+                            )
+                           
+                        }
+                    )
+            ),
+        )
+    }
+
+
     render() {
-        console.log(this.state.spells);
-        const spls = this.state.spells.map((spell) => {
-            return <Spells name={spell.name} url={spell.url} level={spell.level}/>
+
+
+        const splInf = this.state.spellsInfo.map((spell) => {
+            return <Spells name={spell.name} level={spell.level}/>
 
         });
 
-        return(
-            <div>
+        return (
+
+            <div className="App">
+                <h2>Spells from DnD</h2>
+
                 <section className="Spells">
-                   <p>{spls}</p>
+
+                    <div>{splInf}</div>
+
                 </section>
             </div>
         );
