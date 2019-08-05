@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Spells from './Spells/Spells';
+import SpellCard from './SpellCard/SpellCard';
 import './App.css';
 import axios from 'axios';
 
@@ -21,7 +22,8 @@ class App extends Component {
         this.state = {
             spells: [],
             spellsInfo: [],
-            value: ''
+            value: '',
+            indexInLocal: []
         };
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -58,19 +60,41 @@ class App extends Component {
 
     saveInLocalStorage = (e) => {
         const indexSpell = e.target.value;
-        console.log(indexSpell);
-        localStorage.setItem("spellIndex", indexSpell);
+        localStorage.setItem(indexSpell, indexSpell);
+        this.getFromLocalStorage(indexSpell);
     };
+
+    getFromLocalStorage = (e) => {
+      //  if (this.state.indexInLocal.includes(e)) {
+      //      console.log('Already in it');
+      //  } else {
+            this.state.indexInLocal.push(localStorage.getItem(e));
+      //  }
+    };
+
+    showSpellBook = () => {
+
+    };
+
 
     render() {
         const splInf = this.state.spellsInfo.filter(searchName(this.state.value)).map((spell) => {
-            return <Spells name={spell.name} level={spell.level}/>
+            return <Spells name={spell.name} level={spell.level} index={spell.index} save={this.saveInLocalStorage}/>
         });
+
+        /*const fullSpell = this.state.indexInLocal.map((spellIndex) => {
+
+            return <SpellCard index={spellIndex}/>
+        });*/
+
 
         return (
             <div className="App">
                 <h2>Spells from DnD</h2>
+                <div>
+                </div>
                 <form>
+
                     <label>Search</label>
                     <input type="text" value={this.state.value} onChange={e => this.onChangeHandler(e)}/>
                 </form>
