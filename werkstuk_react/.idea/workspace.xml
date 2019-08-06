@@ -4,6 +4,7 @@
     <list default="true" id="5d607c4b-d43d-480c-9d0a-1e22e4c7205e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
     </list>
@@ -51,7 +52,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -121,8 +122,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.eject" />
+        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
@@ -142,6 +143,10 @@
       <workItem from="1564925524761" duration="4808000" />
       <workItem from="1564939762681" duration="4689000" />
       <workItem from="1564995004962" duration="14192000" />
+      <workItem from="1565011951891" duration="1048000" />
+      <workItem from="1565013442220" duration="9828000" />
+      <workItem from="1565073934340" duration="3901000" />
+      <workItem from="1565078053950" duration="10957000" />
     </task>
     <servers />
   </component>

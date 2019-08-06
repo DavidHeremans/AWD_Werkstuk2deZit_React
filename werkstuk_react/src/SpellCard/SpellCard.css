@@ -1,34 +1,16 @@
-.card{
-    border: 2px solid black;
-    width: 400px;
-    margin: 15px auto;
+.remove{
+    margin-left: 70%;
+    padding: 8px;
+    border-style: none;
+    background-color: white;
+    width:15%;
 }
-
-.brussel{
-    background-color: green;
-}
-
-.antwerpen{
-    background-color: blue;
-}
-
-.gent{
-    background-color: orange;
-}
-
-.leuven{
-    background-color: aqua;
-}
-
-.other{
-    background-color: indianred;
-    color: white;
-}
-
-.user{
-    border-style: dashed;
-    background-color: black;
-    color: white;
-    font-weight: bold;
-    font-style: italic;
+ li{
+    display: inline-block;
+    vertical-align: top;
+     border: 2px solid black;
+     width: 28%;
+     padding: 5px;
+     margin: 1.5%;
+     list-style-type: none;
 }

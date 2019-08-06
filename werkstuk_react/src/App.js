@@ -7,6 +7,7 @@ import axios from 'axios';
 //Bronnen
 // API ophalen: https://stackoverflow.com/questions/54592441/promise-all-and-correctly-update-the-state-using-react-js
 // Zoekfunctie: https://www.youtube.com/watch?v=YRiMo2EjVds
+// delete from array https://stackoverflow.com/questions/36326612/delete-item-from-state-array-in-react
 
 function searchName(value) {
     return function (x) {
@@ -23,7 +24,8 @@ class App extends Component {
             spells: [],
             spellsInfo: [],
             value: '',
-            indexInLocal: []
+            indexInLocal: [],
+            selected: null
         };
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -59,40 +61,51 @@ class App extends Component {
     };
 
     saveInLocalStorage = (e) => {
+        this.setState({selected: e});
         const indexSpell = e.target.value;
         localStorage.setItem(indexSpell, indexSpell);
         this.getFromLocalStorage(indexSpell);
     };
 
-    getFromLocalStorage = (e) => {
-      //  if (this.state.indexInLocal.includes(e)) {
-      //      console.log('Already in it');
-      //  } else {
-            this.state.indexInLocal.push(localStorage.getItem(e));
-      //  }
+    getFromLocalStorage = (value) => {
+        if (this.state.indexInLocal.includes(value)) {
+            console.log('Already in it');
+        } else {
+            this.setState({indexInLocal: [...this.state.indexInLocal, localStorage.getItem(value)]})
+        }
     };
 
-    showSpellBook = () => {
-
+    removeFromLocalStorage = (e) => {
+        let array = [...this.state.indexInLocal];
+        let index = array.indexOf(e.target.value);
+        if (index !== -1) {
+            array.splice(index, 1);
+            this.setState({indexInLocal: array});
+            localStorage.removeItem(e.target.value);
+        }
     };
-
 
     render() {
         const splInf = this.state.spellsInfo.filter(searchName(this.state.value)).map((spell) => {
             return <Spells name={spell.name} level={spell.level} index={spell.index} save={this.saveInLocalStorage}/>
         });
 
-        /*const fullSpell = this.state.indexInLocal.map((spellIndex) => {
 
-            return <SpellCard index={spellIndex}/>
-        });*/
+        const spellBook = this.state.spellsInfo.map((spell) => {
+            if (this.state.indexInLocal.includes(spell.index.toString())) {
+                return <SpellCard index={spell.index} level={spell.level} name={spell.name} desc={spell.desc}
+                                  range={spell.range} duration={spell.duration} remove={this.removeFromLocalStorage}/>
+            }
 
+        });
 
         return (
             <div className="App">
+                <h1>Spellbook</h1>
+                <ul>
+                    {spellBook}
+                </ul>
                 <h2>Spells from DnD</h2>
-                <div>
-                </div>
                 <form>
 
                     <label>Search</label>
