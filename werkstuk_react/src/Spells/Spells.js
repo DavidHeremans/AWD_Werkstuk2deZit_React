@@ -1,17 +1,17 @@
 import React from 'react';
 import './Spells.css'
+import addImage from './images/addIcon.png';
 
 const spell = (props) => {
-
     return (
-        <div className="card">
+        <li className="spellLi">
             <p> Spell: {props.name}</p>
             <p>Level: {props.level}</p>
-            <button type="submit" name="spellIndex" value={props.index} onClick={props.save} >+</button>
+            <input type="image" src={props.image} alt="add" className="addImage" name="spellIndex" value={props.index}
+                   onClick={props.save}/>
 
 
-
-        </div>
+        </li>
     );
 }
 

@@ -3,6 +3,8 @@ import Spells from './Spells/Spells';
 import SpellCard from './SpellCard/SpellCard';
 import './App.css';
 import axios from 'axios';
+import inLocalImage from './images/done.png';
+import addImage from './images/addIcon.png';
 
 //Bronnen
 // API ophalen: https://stackoverflow.com/questions/54592441/promise-all-and-correctly-update-the-state-using-react-js
@@ -25,7 +27,6 @@ class App extends Component {
             spellsInfo: [],
             value: '',
             indexInLocal: [],
-            selected: null
         };
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -61,7 +62,6 @@ class App extends Component {
     };
 
     saveInLocalStorage = (e) => {
-        this.setState({selected: e});
         const indexSpell = e.target.value;
         localStorage.setItem(indexSpell, indexSpell);
         this.getFromLocalStorage(indexSpell);
@@ -80,14 +80,20 @@ class App extends Component {
         let index = array.indexOf(e.target.value);
         if (index !== -1) {
             array.splice(index, 1);
-            this.setState({indexInLocal: array});
             localStorage.removeItem(e.target.value);
+            this.setState({indexInLocal: array});
         }
     };
 
     render() {
         const splInf = this.state.spellsInfo.filter(searchName(this.state.value)).map((spell) => {
-            return <Spells name={spell.name} level={spell.level} index={spell.index} save={this.saveInLocalStorage}/>
+            if (this.state.indexInLocal.includes(spell.index.toString())) {
+                return <Spells name={spell.name} level={spell.level} image={inLocalImage} index={spell.index}
+                               save={this.saveInLocalStorage}/>
+            } else {
+                return <Spells name={spell.name} level={spell.level} image={addImage} index={spell.index}
+                               save={this.saveInLocalStorage}/>
+            }
         });
 
 
@@ -112,9 +118,9 @@ class App extends Component {
                     <input type="text" value={this.state.value} onChange={e => this.onChangeHandler(e)}/>
                 </form>
                 <section className="Spells">
-                    <div>
+                    <ul>
                         {splInf}
-                    </div>
+                    </ul>
                 </section>
             </div>
         );

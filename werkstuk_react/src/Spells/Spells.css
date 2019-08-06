@@ -1,6 +1,16 @@
-.card{
-    border: 2px solid black;
-    width: 200px;
-    margin: 10px auto;
-    padding: 5px;
+
+
+.spellLi{
+    display: inline-block;
+    vertical-align: top;
+    border: 2px solid darkred;
+    border-radius: 20px;
+    width: 15%;
+    padding: 2px;
+    margin: 1.5%;
+    list-style-type: none;
+}
+
+.addImage{
+    width: 10%;
 }

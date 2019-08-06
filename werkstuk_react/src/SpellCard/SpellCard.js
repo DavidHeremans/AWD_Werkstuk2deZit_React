@@ -7,7 +7,7 @@ const spellCard = (props) => {
     return (
 
 
-        <li>
+        <li className="cardLi">
             <input alt="delete" type="image" src={image} className="remove" value={props.index}
                     onClick={props.remove}/>
             <p>Name: {props.name}</p>

@@ -52,7 +52,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/images" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -66,12 +66,15 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\EhB18-19\AWD_Werkstuk2deZit_React\werkstuk_react\src\images" />
+      <recent name="C:\EhB18-19\AWD_Werkstuk2deZit_React\werkstuk_react\src" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\EhB18-19\AWD_Werkstuk2deZit_React\werkstuk_react\src\images" />
+      <recent name="C:\EhB18-19\AWD_Werkstuk2deZit_React\werkstuk_react\src\Spells" />
       <recent name="C:\EhB18-19\AWD_Werkstuk2deZit_React\werkstuk_react\src\AddressForm" />
       <recent name="C:\EhB18-19\AWD_Werkstuk2deZit_React\werkstuk_react\src\AddressCard" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\EhB18-19\AWD_Werkstuk2deZit_React\werkstuk_react\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -146,7 +149,7 @@
       <workItem from="1565011951891" duration="1048000" />
       <workItem from="1565013442220" duration="9828000" />
       <workItem from="1565073934340" duration="3901000" />
-      <workItem from="1565078053950" duration="10957000" />
+      <workItem from="1565078053950" duration="16211000" />
     </task>
     <servers />
   </component>
